@@ -155,6 +155,8 @@ const DishesForm = () => {
               {...register('spiciness_scale')}
               required
               className="input-dishes"
+              min="1"
+              max="10"
             />
           </label>
         </>
