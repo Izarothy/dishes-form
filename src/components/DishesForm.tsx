@@ -24,18 +24,21 @@ const DishesForm = () => {
       type,
     };
 
-    if (type === 'pizza') {
-      requestBody.no_of_slices = no_of_slices;
-      requestBody.diameter = diameter;
+    switch (type) {
+      case 'pizza':
+        requestBody.no_of_slices = no_of_slices;
+        requestBody.diameter = diameter;
+        break;
+      case 'soup':
+        requestBody.spiciness_scale = spiciness_scale;
+        break;
+      case 'sandwich':
+        requestBody.slices_of_bread = slices_of_bread;
+        break;
+      default:
+        break;
     }
 
-    if (type === 'soup') {
-      requestBody.spiciness_scale = spiciness_scale;
-    }
-
-    if (type === 'sandwich') {
-      requestBody.slices_of_bread = slices_of_bread;
-    }
     const res = await fetch(
       'https://frosty-wood-6558.getsandbox.com:443/dishes ',
       {
