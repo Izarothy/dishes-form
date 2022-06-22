@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Dish } from 'lib/types';
 import { useDispatch } from 'react-redux';
 import { setDishes } from 'lib/dishesSlice';
+import { useAppSelector } from 'lib/hooks';
 type Inputs = Dish;
 
 const DishesForm = () => {
@@ -59,6 +60,9 @@ const DishesForm = () => {
       );
     }
 
+    const data = await res.json();
+    dispatch(setDishes(data));
+
     reset();
   };
 
@@ -72,6 +76,8 @@ const DishesForm = () => {
       return setError('Please use a hh:mm:ss format');
     setError('');
   };
+
+  const dishes = useAppSelector((state) => state.dishes.value);
 
   return (
     <>
