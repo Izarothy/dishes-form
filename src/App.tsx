@@ -1,10 +1,9 @@
 import DishesForm from 'components/DishesForm';
 import React from 'react';
-import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-home-background bg-cover bg-center h-screen grid place-items-center">
       <DishesForm />
     </div>
   );

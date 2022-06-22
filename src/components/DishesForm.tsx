@@ -80,8 +80,8 @@ const DishesForm = () => {
   const dishes = useAppSelector((state) => state.dishes.value);
 
   return (
-    <>
-      <p>{error}</p>
+    <div className="flex flex-col gap-4">
+      <p className="w-4">{error}</p>
       <form onSubmit={handleSubmit(sendDish)}>
         <input type="text" {...register('name')} required />
         <input
@@ -125,7 +125,7 @@ const DishesForm = () => {
         )}
         <input type="submit" value="Send" />
       </form>
-    </>
+    </div>
   );
 };
 
