@@ -19,7 +19,7 @@ code {
 
 @layer components {
   .input-dishes {
-    @apply bg-secondary-dark rounded-md py-1 px-2 text-white;
+    @apply bg-secondary-dark rounded-md py-1 px-2 text-white placeholder:text-gray-500;
   }
 
   .label-dishes {

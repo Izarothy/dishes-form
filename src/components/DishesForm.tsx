@@ -92,6 +92,7 @@ const DishesForm = () => {
           {...register('name')}
           required
           className="input-dishes"
+          placeholder="Ex. My Own Pizza"
         />
       </label>
       <label className="label-dishes">
@@ -132,6 +133,7 @@ const DishesForm = () => {
               {...register('no_of_slices')}
               required
               className="input-dishes"
+              placeholder="Ex. 8"
             />
           </label>
           <label className="label-dishes">
@@ -142,6 +144,7 @@ const DishesForm = () => {
               required
               step="0.01"
               className="input-dishes"
+              placeholder="Ex. 12.2"
             />
           </label>
         </div>
@@ -157,6 +160,7 @@ const DishesForm = () => {
               className="input-dishes"
               min="1"
               max="10"
+              placeholder="Ex. 5"
             />
           </label>
         </>
@@ -170,6 +174,7 @@ const DishesForm = () => {
               {...register('slices_of_bread')}
               required
               className="input-dishes"
+              placeholder="Ex. 2"
             />
           </label>
         </>
