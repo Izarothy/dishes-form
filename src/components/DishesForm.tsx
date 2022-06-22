@@ -12,6 +12,7 @@ const DishesForm = () => {
   const dispatch = useDispatch();
   const [dishType, setDishType] = useState('pizza');
   const [error, setError] = useState('');
+  const [prepTime, setPrepTime] = useState('00:00:00');
 
   const sendDish = async (values: Inputs) => {
     const requestBody = parseInputs(values);
@@ -43,12 +44,22 @@ const DishesForm = () => {
 
   const validateTimeInput = (e: React.FormEvent<HTMLInputElement>) => {
     const result = (e.target as HTMLInputElement).value;
-    const [hour, minute, second] = result.split(':');
-    if (result.split(':').length !== 3)
-      return setError('Please use a hh:mm:ss format');
+    setPrepTime(result);
 
-    if ([hour, minute, second].some((number) => number.length !== 2))
+    const [hour, minute, second] = result.split(':');
+    if (result.split(':').length < 3) {
+      setPrepTime('00:00:00');
       return setError('Please use a hh:mm:ss format');
+    }
+
+    if (
+      [hour, minute, second].some(
+        (number) => !number.length || number.length > 2
+      )
+    ) {
+      setPrepTime('00:00:00');
+      return setError('Please use a hh:mm:ss format');
+    }
     setError('');
   };
 
@@ -81,6 +92,7 @@ const DishesForm = () => {
             validateTimeInput(e)
           }
           className="input-dishes"
+          value={prepTime}
         />
         <p className="h-4 text-red-700">{error}</p>
       </label>
