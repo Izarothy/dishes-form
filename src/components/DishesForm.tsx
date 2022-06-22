@@ -71,6 +71,7 @@ const DishesForm = () => {
       className="bg-primary-dark rounded-md flex flex-col gap-2 text-center items-center lg:w-1/3 xl:w-1/4 px-4 py-8"
     >
       <h2 className="w-full text-2xl text-white font-semibold">Dish form</h2>
+      <p className="h-8 text-red-700">{error}</p>
       <label className="label-dishes">
         <h3 className="label-dishes-title">Dish name</h3>
         <input
@@ -94,7 +95,6 @@ const DishesForm = () => {
           className="input-dishes"
           value={prepTime}
         />
-        <p className="h-4 text-red-700">{error}</p>
       </label>
       <div className="flex justify-start w-[14.8rem]">
         <label className="label-dishes">
