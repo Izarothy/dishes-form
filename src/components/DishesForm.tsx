@@ -82,7 +82,7 @@ const DishesForm = () => {
   return (
     <form
       onSubmit={handleSubmit(sendDish)}
-      className="bg-primary-dark rounded-md flex flex-col gap-2 text-center items-center w-1/4 px-4 py-8"
+      className="bg-primary-dark rounded-md flex flex-col gap-2 text-center items-center lg:w-1/3 xl:w-1/4 px-4 py-8"
     >
       <h2 className="w-full text-2xl text-white font-semibold">Dish form</h2>
       <label className="label-dishes">
