@@ -80,10 +80,22 @@ const DishesForm = () => {
   const dishes = useAppSelector((state) => state.dishes.value);
 
   return (
-    <div className="flex flex-col gap-4">
-      <p className="w-4">{error}</p>
-      <form onSubmit={handleSubmit(sendDish)}>
-        <input type="text" {...register('name')} required />
+    <form
+      onSubmit={handleSubmit(sendDish)}
+      className="bg-primary-dark rounded-md flex flex-col gap-2 text-center items-center w-1/4 px-4 py-8"
+    >
+      <h2 className="w-full text-2xl text-white font-semibold">Dish form</h2>
+      <label className="label-dishes">
+        <h3 className="label-dishes-title">Dish name</h3>
+        <input
+          type="text"
+          {...register('name')}
+          required
+          className="input-dishes"
+        />
+      </label>
+      <label className="label-dishes">
+        <h3 className="label-dishes-title">Preparation time</h3>
         <input
           type="text"
           {...register('preparation_time')}
@@ -92,40 +104,80 @@ const DishesForm = () => {
           onChange={(e: React.FormEvent<HTMLInputElement>) =>
             validateTimeInput(e)
           }
+          className="input-dishes"
         />
-        <select
-          {...register('type')}
-          required
-          onChange={(e) => setDishType(e.target.value)}
-        >
-          <option value="pizza">Pizza</option>
-          <option value="soup">Soup</option>
-          <option value="sandwich">Sandwich</option>
-        </select>
-        {dishType === 'pizza' && (
-          <div>
-            <input type="number" {...register('no_of_slices')} required />
+        <p className="h-4 text-red-700">{error}</p>
+      </label>
+      <div className="flex justify-start w-[14.8rem]">
+        <label className="label-dishes">
+          <h3 className="label-dishes-title font-montserrat">Dish type</h3>
+          <select
+            {...register('type')}
+            required
+            onChange={(e) => setDishType(e.target.value)}
+            className="input-dishes py-2 w-full"
+          >
+            <option value="pizza">Pizza</option>
+            <option value="soup">Soup</option>
+            <option value="sandwich">Sandwich</option>
+          </select>
+        </label>
+      </div>
+      {dishType === 'pizza' && (
+        <div>
+          <label className="label-dishes">
+            <h3 className="label-dishes-title">Number of slices</h3>
+            <input
+              type="number"
+              {...register('no_of_slices')}
+              required
+              className="input-dishes"
+            />
+          </label>
+          <label className="label-dishes">
+            <h3 className="label-dishes-title">Pizza diameter</h3>
             <input
               type="number"
               {...register('diameter')}
               required
               step="0.01"
+              className="input-dishes"
             />
-          </div>
-        )}
-        {dishType === 'soup' && (
-          <div>
-            <input type="number" {...register('spiciness_scale')} required />
-          </div>
-        )}
-        {dishType === 'sandwich' && (
-          <div>
-            <input type="number" {...register('slices_of_bread')} required />
-          </div>
-        )}
-        <input type="submit" value="Send" />
-      </form>
-    </div>
+          </label>
+        </div>
+      )}
+      {dishType === 'soup' && (
+        <>
+          <label className="label-dishes">
+            <h3 className="label-dishes-title">Scale of spiciness (1-10)</h3>
+            <input
+              type="number"
+              {...register('spiciness_scale')}
+              required
+              className="input-dishes"
+            />
+          </label>
+        </>
+      )}
+      {dishType === 'sandwich' && (
+        <>
+          <label className="label-dishes">
+            <h3 className="label-dishes-title">Number of bread slices</h3>
+            <input
+              type="number"
+              {...register('slices_of_bread')}
+              required
+              className="input-dishes"
+            />
+          </label>
+        </>
+      )}
+      <input
+        type="submit"
+        value="Send"
+        className="py-2 px-10 my-2 cursor-pointer rounded-md bg-blue-500 text-white"
+      />
+    </form>
   );
 };
 

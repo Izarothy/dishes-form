@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 body {
   margin: 0;
@@ -14,4 +15,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@layer components {
+  .input-dishes {
+    @apply bg-secondary-dark rounded-md py-1 px-2 text-white;
+  }
+
+  .label-dishes {
+    @apply flex flex-col text-gray-100;
+  }
+
+  .label-dishes-title {
+    @apply font-bold text-left my-2;
+  }
 }
